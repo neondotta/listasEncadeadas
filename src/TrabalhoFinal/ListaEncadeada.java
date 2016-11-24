@@ -111,6 +111,7 @@ public class ListaEncadeada<T extends Comparable<T>> implements Iterable<T> {
 		public void orderedInsert(T dado){
 			current = head;
 			Node novo = new Node(dado);
+			int view = 0;
 			if(head == null){
 				viewHead(dado);
 			}else{
@@ -137,9 +138,10 @@ public class ListaEncadeada<T extends Comparable<T>> implements Iterable<T> {
 						} else {
 							pushFront(dado);
 						}
-					}else{					
-						next();
 					}
+/*					else{					
+						next();
+					}*/
 				}else{
 					append(dado);
 				}

@@ -71,6 +71,7 @@ public class TrabalhoFinal {
 		iterator.orderedInsert("Leopoldo");
 		iterator.orderedInsert("John");
 		iterator.orderedInsert("Eduardo");
+		iterator.orderedInsert("Jonas");
 		
 		for(String s : lista){
 			System.out.println( s );
