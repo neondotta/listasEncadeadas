@@ -128,8 +128,19 @@ public class ListaEncadeada<T extends Comparable<T>> implements Iterable<T> {
 			System.out.println(head.data);
 		}
 		public void index(T dado){
-			
-			if()
+			current = head;
+			int count = 0;
+			if(head == null){
+				System.out.println("No Nodes!");
+			}else{
+				List l = new List(dado);
+				while(current != tail){
+					while(count < intervalList){
+						next();
+					}
+					
+				}
+			}
 				
 		}
 
