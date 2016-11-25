@@ -7,4 +7,6 @@ public interface Iterador<T> extends Iterator<T> {
 	void insert(T dado);
 	void orderedInsert(T dado);
 	void debug();
+
+	void appendList(T dado);
 }

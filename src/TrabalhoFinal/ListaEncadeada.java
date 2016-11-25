@@ -16,8 +16,9 @@ public class ListaEncadeada<T extends Comparable<T>> implements Iterable<T> {
 	
 	private class List{
 		private T data;
-		private Node next;
-		private Node previous;
+		private Node nextList;
+		private Node previousList;
+		private Node nodeList;
 		
 		public List(T value) {
 			data = value;
@@ -28,9 +29,9 @@ public class ListaEncadeada<T extends Comparable<T>> implements Iterable<T> {
 		private Node current = null;
 		private Node previous = null;
 		
-		private List currentList = null;
-		private List previousList = null;
-		private List nodeList = null;
+/*		private Node currentList = null;
+		private Node previousList = null;*/
+		private Node nodeList = null;
 		private int intervalList = 4;
 		
 		private int qtdElemento = 0;
@@ -127,23 +128,28 @@ public class ListaEncadeada<T extends Comparable<T>> implements Iterable<T> {
 			//System.out.println(tail.data);
 			System.out.println(head.data);
 		}
+		// INICIANDO A LISTA INDEXADA 
+
 		public void index(T dado){
 			current = head;
+			List l = new List(dado);
 			int count = 0;
 			if(head == null){
 				System.out.println("No Nodes!");
 			}else{
-				List l = new List(dado);
+
 				while(current != tail){
 					while(count < intervalList){
 						next();
 					}
-					
+					l.nodeList = current;
 				}
 			}
 				
 		}
 
+		// FINALIZANDO A LISTA INDEXADA 
+		
 		public void orderedInsert(T dado){
 			current = head;
 			Node novo = new Node(dado);
