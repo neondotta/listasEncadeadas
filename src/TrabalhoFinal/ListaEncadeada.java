@@ -14,9 +14,25 @@ public class ListaEncadeada<T extends Comparable<T>> implements Iterable<T> {
 		}
 	}
 	
+	private class List{
+		private T data;
+		private Node next;
+		private Node previous;
+		
+		public List(T value) {
+			data = value;
+		}
+	}
+	
 	private class ListIterator implements Iterador<T> {
 		private Node current = null;
 		private Node previous = null;
+		
+		private List currentList = null;
+		private List previousList = null;
+		private List nodeList = null;
+		private int intervalList = 4;
+		
 		private int qtdElemento = 0;
 		
 		@Override
@@ -107,6 +123,15 @@ public class ListaEncadeada<T extends Comparable<T>> implements Iterable<T> {
 				tail = novo;
 			}
 		}
+		public void debug(){
+			//System.out.println(tail.data);
+			System.out.println(head.data);
+		}
+		public void index(T dado){
+			
+			if()
+				
+		}
 
 		public void orderedInsert(T dado){
 			current = head;
@@ -127,6 +152,7 @@ public class ListaEncadeada<T extends Comparable<T>> implements Iterable<T> {
 								next();
 							} else {
 								insert(dado);
+								view = 1;
 								break;
 							}
 						}
@@ -138,15 +164,16 @@ public class ListaEncadeada<T extends Comparable<T>> implements Iterable<T> {
 						} else {
 							pushFront(dado);
 						}
+					}else{
+						if(view == 0){
+							append(dado);
+						}	
 					}
-/*					else{					
-						next();
-					}*/
 				}else{
 					append(dado);
 				}
 			}
-			
+			view = 0;
 		}
 		//public int tamanho(){return qtdElemento;}
 		

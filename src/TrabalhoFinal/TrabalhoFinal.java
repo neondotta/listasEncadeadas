@@ -67,16 +67,20 @@ public class TrabalhoFinal {
 		
 		iterator = lista.iterator();
 		
+
 		iterator.orderedInsert("Neon");
 		iterator.orderedInsert("Leopoldo");
 		iterator.orderedInsert("John");
 		iterator.orderedInsert("Eduardo");
 		iterator.orderedInsert("Jonas");
-		
+		iterator.orderedInsert("Roger");
+		iterator.orderedInsert("Tamara");
+		iterator.orderedInsert("Lucas");
 		for(String s : lista){
 			System.out.println( s );
 		}
-
+		System.out.println();
+		iterator.debug();
 	}
 
 }
