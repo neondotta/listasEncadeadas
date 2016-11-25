@@ -80,7 +80,7 @@ public class TrabalhoFinal {
 			System.out.println( s );
 		}
 		System.out.println();
-		iterator.debug();
+		iterator.pesquisar("Johnn");
 	}
 
 }

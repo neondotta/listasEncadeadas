@@ -14,24 +14,13 @@ public class ListaEncadeada<T extends Comparable<T>> implements Iterable<T> {
 		}
 	}
 	
-	private class List{
-		private T data;
-		private Node nextList;
-		private Node previousList;
-		private Node nodeList;
-		
-		public List(T value) {
-			data = value;
-		}
-	}
-	
 	private class ListIterator implements Iterador<T> {
 		private Node current = null;
 		private Node previous = null;
 		
-/*		private Node currentList = null;
-		private Node previousList = null;*/
-		private Node nodeList = null;
+		private Node limitInit;
+		private Node limitEnd;
+		private Node currentList;
 		private int intervalList = 4;
 		
 		private int qtdElemento = 0;
@@ -129,24 +118,63 @@ public class ListaEncadeada<T extends Comparable<T>> implements Iterable<T> {
 			System.out.println(head.data);
 		}
 		// INICIANDO A LISTA INDEXADA 
-
-		public void index(T dado){
-			current = head;
-			List l = new List(dado);
+		public void nextLimit(){
 			int count = 0;
-			if(head == null){
-				System.out.println("No Nodes!");
-			}else{
-
-				while(current != tail){
-					while(count < intervalList){
-						next();
-					}
-					l.nodeList = current;
+			while(hasNext()){
+				count++;
+				next();
+				if(current == tail){
+					limitEnd = current;
+					currentList = limitEnd;
+					break;
 				}
-			}
-				
+				if(count  == intervalList){
+					limitEnd = current;
+					currentList = limitEnd;
+					break;
+				}
+			}			
 		}
+		public void index(){
+			current = head;
+			limitInit = head;
+			
+			nextLimit();
+		}
+			
+			public boolean pesquisar(T dado){
+				T p = dado;
+				if(head == null){
+					System.out.println("No Nodes!");
+				}
+				index();
+				while(hasNext()){
+					if (dado instanceof String) {
+						if (dado.compareTo(limitEnd.data) < 0) {
+							limitInit = limitEnd;
+							current = limitEnd;
+							nextLimit();
+						}else{
+							current = limitEnd;
+							if (dado instanceof String) {
+								while(!dado.equals(current.data)){
+									
+									current = current.previous;
+									
+									if(current == limitInit){
+										System.out.println("Não existe esse Objeto");
+										return false;
+										//break;
+									}
+								}
+								
+							}
+						}
+					}
+				}
+				System.out.println("Objeto encontrado");
+				return true;
+			}
 
 		// FINALIZANDO A LISTA INDEXADA 
 		
